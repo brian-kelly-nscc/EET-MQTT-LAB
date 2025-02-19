@@ -17,21 +17,21 @@
 */
 
 // Customize your board name here
-#define BOARD_NAME "PLC-Board-01"
+#define BOARD_NAME "Brian_MQTT_DEMO_Morning"
 
 // Static network configuration
 // For example, you could assign an IP from the available PLC network addresses:
 // 192.168.60.170 to 192.168.60.199
-IPAddress ip(192, 168, 1, 177);        // Change as needed for your network
+IPAddress ip(192, 168, 60, 170);        // Change as needed for your network
 IPAddress subnet(255, 255, 255, 0);    // Network's subnet mask
 
 // Optional: For full network configuration (DNS and Gateway)
 // For an unrouted, airgapped network, these values may be set to a dummy address.
-IPAddress dns(192, 168, 1, 1);
-IPAddress gateway(192, 168, 1, 1);
+IPAddress dns(192, 168, 60, 1);
+IPAddress gateway(192, 168, 60, 1);
 
 // MQTT Broker IP address (update this to match your VM's broker)
-const char* mqtt_server = "192.168.1.131";
+const char* mqtt_server = "192.168.60.150";
 
 // MAC address for the Ethernet shield
 // IMPORTANT: Change this if you have multiple boards on the same network.
