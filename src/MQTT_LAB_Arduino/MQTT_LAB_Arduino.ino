@@ -123,13 +123,14 @@ void loop() {
     // Read the analog voltage on A0 (0 - 1023 corresponding to 0V - 5V)
     int analogValue = analogRead(A0);
     
-    // Convert the integer reading to a string (payload)
-    char payload[10];
-    itoa(analogValue, payload, 10);
+    // Build the payload string to include the board name and the analog reading.
+    // For example: "PLC-Board-01 A0 = 512"
+    char payload[50];
+    snprintf(payload, sizeof(payload), "%s A0 = %d", BOARD_NAME, analogValue);
 
-    // Publish the analog reading to the topic "sensor/analog"
+    // Publish the payload to the topic "sensor/analog"
     if (client.publish("sensor/analog", payload)) {
-      Serial.print("Published analog value: ");
+      Serial.print("Published payload: ");
       Serial.println(payload);
     } else {
       Serial.println("MQTT publish failed.");
